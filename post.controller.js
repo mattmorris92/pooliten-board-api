@@ -14,8 +14,11 @@ exports.create = (req, res) => {
 
     // Create a Post
     const post = new Post({
-        title: req.body.title || "No post title",
-        body: req.body.body || "No post body",
+        title: req.body.title || "No post title.",
+        body: req.body.body || "No post body.",
+        tags: req.body.tags || "No post tags.",
+        upvotes: req.body.upvotes || 0,
+        upvotes: req.body.downvotes || 0,
     });
 
     // Save Post in the database
@@ -75,7 +78,10 @@ exports.update = (req, res) => {
     // Find and update post with the request body
     Post.findByIdAndUpdate(req.params.postId, {
         title: req.body.title || "No post title",
-        body: req.body.body
+        body: req.body.body,
+        tags: req.body.tags || "No post tags.",
+        upvotes: req.body.upvotes || 0,
+        upvotes: req.body.downvotes || 0,
     }, {new: true})
     .then(post => {
         if(!post) {
