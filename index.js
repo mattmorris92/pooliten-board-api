@@ -37,6 +37,7 @@ app.get('/', (req, res) => {
     res.json({"message": "Welcome to Pooliten-Board API"});
 });
 
-app.listen(config.serverport, () => {
-    console.log("Server is listening on port 8080");
+const port = process.env.PORT || 8080
+app.listen(port, () => {
+    console.log("Server is listening on port");
 });
